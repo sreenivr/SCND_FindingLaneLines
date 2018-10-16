@@ -31,6 +31,4 @@ Here are few example images after the lane lines are marked.
 <img src="test_images_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 <img src="test_images_output/solidYellowCurve2.jpg" width="480" alt="Combined Image" />
 
-Finally, the pipeline was applied on a real video file and see the output below.
-
-<img src="test_videos_output/solidWhiteRight.mp4" width="480" alt="Combined Image" />
+Finally, the pipeline was applied on a real video file.
