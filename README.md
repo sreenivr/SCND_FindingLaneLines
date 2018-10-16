@@ -5,51 +5,25 @@
 Overview
 ---
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
+The goal of this project is to implement a pipeline that finds lane lines on the road. I have used Python and OpenCV to implement the pipeline. I started with implementation of lane finding pipeline on an image. Then the same pipeline was applied on a videos. Videos are essentially series of images.
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
+Following are the steps in my pipeline.
 
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
+1. Convert the image to gray scale
+2. Noise removal using GaussianBlur. 
+3. Canny edge detection
+4. Region of interest selection
+5. Hough transform for line segment detection
+6. Computing left and right lanes by extrapolating the line segment.
 
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
+Converting the image to gray scale makes it easier to implement algorithms like edge detection. I used OpenCV function cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) to accomplish this step.
 
+Edges are detected when there is high rate of change of intensity value in a image function. Noise removal helps to remove any unwanted edges detected in the next step. I used the OpenCV function cv2.GaussianBlur() to perform this step.
 
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
+The next step was to use the OpenCV function cv2.Canny() to perform Canny Edge detection.
 
-1. Describe the pipeline
+There are can be many edges and lines in the given image. One of the main challenges was to find the region of interest in the image such that unwanted lines are removed. This is one of the disadvatages of the current algorithm that I have implemented. This implementation expects the region interest in a specific region in the given image. The region of interest is computed as a function of width and height of the given image. This implementation will fail if the actual lane lines are outside the region of interest.
 
-2. Identify any shortcomings
+Hough transform is used to detect the line segments in the given image. Lane lines can be a solid line or a doted line. In case of doted line, this implementation extrapolates or avarages the slope/offset of the line segments. Hough transform returns a set of lines. Based on its slope, we can detect whether it belongs to left or right lane. 
 
-3. Suggest possible improvements
-
-We encourage using images in your writeup to demonstrate how your pipeline works.  
-
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
-
-
-The Project
----
-
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
-
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://classroom.udacity.com/nanodegrees/nd013/parts/fbf77062-5703-404e-b60c-95b78b2f3f9e/modules/83ec35ee-1e02-48a5-bdb7-d244bd47c2dc/lessons/8c82408b-a217-4d09-b81d-1bda4c6380ef/concepts/4f1870e0-3849-43e4-b670-12e6f2d4b7a7) if you haven't already.
-
-**Step 2:** Open the code in a Jupyter Notebook
-
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
-
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
-
-`> jupyter notebook`
-
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
-
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
