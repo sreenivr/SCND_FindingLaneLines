@@ -26,4 +26,11 @@ There are can be many edges and lines in the given image. One of the main challe
 
 Hough transform is used to detect the line segments in the given image. Lane lines can be a solid line or a doted line. In case of doted line, this implementation extrapolates or avarages the slope/offset of the line segments. Hough transform returns a set of lines. Based on its slope, we can detect whether it belongs to left or right lane. 
 
+Here are few example images after the lane lines are marked.
 
+<img src="test_image_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+<img src="test_image_output/solidYellowCurve2.jpg" width="480" alt="Combined Image" />
+
+Finally, the pipeline was applied on a real video file and see the output below.
+
+<img src="test_videos_output/solidWhiteRight.mp4" width="480" alt="Combined Image" />
