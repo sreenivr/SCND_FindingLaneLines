@@ -28,8 +28,8 @@ Hough transform is used to detect the line segments in the given image. Lane lin
 
 Here are few example images after the lane lines are marked.
 
-<img src="test_image_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
-<img src="test_image_output/solidYellowCurve2.jpg" width="480" alt="Combined Image" />
+<img src="test_images_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+<img src="test_images_output/solidYellowCurve2.jpg" width="480" alt="Combined Image" />
 
 Finally, the pipeline was applied on a real video file and see the output below.
 
