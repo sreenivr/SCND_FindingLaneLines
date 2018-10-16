@@ -24,7 +24,7 @@ The next step was to use the OpenCV function cv2.Canny() to perform Canny Edge d
 
 There are can be many edges and lines in the given image. One of the main challenges was to find the region of interest in the image such that unwanted lines are removed. This is one of the disadvatages of the current algorithm that I have implemented. This implementation expects the region interest in a specific region in the given image. The region of interest is computed as a function of width and height of the given image. This implementation will fail if the actual lane lines are outside the region of interest.
 
-Hough transform is used to detect the line segments in the given image. Lane lines can be a solid line or a doted line. In case of doted line, this implementation extrapolates or avarages the slope/offset of the line segments. Hough transform returns a set of lines. Based on its slope, we can detect whether it belongs to left or right lane. 
+Hough transform is used to detect the line segments in the given image. Lane lines can be a solid line or a doted line. In case of doted line, this implementation extrapolates or avarages the slope/offset of the line segments. Hough transform returns a set of lines. Based on its slope, we can detect whether it belongs to left or right lane. Once the left and right lane lines are computed, it is drwn on top of the actual image in red color.
 
 Here are few example images after the lane lines are marked.
 
