@@ -7,6 +7,9 @@ Overview
 
 The goal of this project is to implement a pipeline that finds lane lines on the road. I have used Python and OpenCV to implement the pipeline. I started with implementation of lane finding pipeline on an image. Then the same pipeline was applied on a videos. Videos are essentially series of images.
 
+Pipeline
+---
+
 Following are the steps in my pipeline.
 
 1. Convert the image to gray scale
@@ -32,3 +35,20 @@ Here are few example images after the lane lines are marked.
 <img src="test_images_output/solidYellowCurve2.jpg" width="480" alt="Combined Image" />
 
 Finally, the pipeline was applied on a real video file.
+
+Short Comings / Improvements
+---
+
+One of the shortcomings in the current implementation is reliably detecting region of interest. This implementation expects the region interest in a specific region in the given image.
+
+In a real world scene, there can be many other edges and lines in an image. e.g., challenge.mp4. This algorithm doesn't deal with such scenarios. One of the solution could be to use an outlier reduction approach like RANSAC on the hough lines.
+
+Using curve fitting to plot the curve instead of straight lines could handle the curves on the road better.
+
+
+
+
+
+
+
+
